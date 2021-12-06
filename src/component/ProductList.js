@@ -50,12 +50,6 @@ function ProductList() {
             alert("Please select category.")
         } else if (!formData.image) {
             alert("Please select image.")
-        } else if (formData.image && fileRef.current.files[0]) {
-            if (!(fileRef.current.files[0].type === 'image/jpeg' || fileRef.current.files[0].type === 'image/png')) {
-                alert('Please upload file having extensions .jpeg/.png only.');
-            } else if (fileRef.current.files[0].size >= 2097152) {// 2097152bytes = 2mb 
-                alert('Please upload image below size 2MB');
-            }
         } else if (formData.name && formData.code && formData.category && formData.image) {
             setModalShow(false);
             setFormData({
@@ -66,6 +60,12 @@ function ProductList() {
                 description: null
             })
             alert("Product added successfully")
+        } else if (formData.image && fileRef.current.files[0]) {
+            if (!(fileRef.current.files[0].type === 'image/jpeg' || fileRef.current.files[0].type === 'image/png')) {
+                alert('Please upload file having extensions .jpeg/.png only.');
+            } else if (fileRef.current.files[0].size >= 2097152) {// 2097152bytes = 2mb 
+                alert('Please upload image below size 2MB');
+            }
         }
 
     }
